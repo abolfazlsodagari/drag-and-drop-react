@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+
 import DragItem from "./drag-item";
 import DropItem from "./drop-item";
 
@@ -7,7 +8,7 @@ import DropItem from "./drop-item";
 function onDragEnd(data, setData) {
   // Getting source and destination from data
   const { source, destination } = data;
-
+  // if not found items return null
   if(!source || !destination) {
     return null;
   }
@@ -65,7 +66,7 @@ function DragAndDrop({ items }) {
 
   return (
     <DragDropContext onDragEnd={(data) => onDragEnd(data, setData)}>
-      <div className="kanban">
+      <div className="kanban" style={{ background: "#00000020" }}>
         {Object.entries(data).map(([key, item]) => (
           <DropItem key={key} index={key} item={item}>
             {item.tasks.map((task, index) => (

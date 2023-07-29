@@ -21,7 +21,23 @@ const DragItem = ({ item, index }) => {
                 borderRadius: "7px",
               }}
             >
-              {item.text}
+              {item?.label ? (
+                <div
+                  style={{
+                    background: item.label.color,
+                    color: item.label.labelColor,
+                    width: "fit-content",
+                    borderRadius: "10px",
+                    padding: "3px 10px",
+                    fontSize: 12,
+                    fontWeight: "500",
+                    boxShadow: "0px 1px 5px #00000050",
+                  }}
+                >
+                  {item.label?.label}
+                </div>
+              ) : null}
+              <span>{item.text}</span>
             </div>
           </div>
         );
